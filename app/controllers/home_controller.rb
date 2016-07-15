@@ -4,4 +4,9 @@ class HomeController < ApplicationController
 
   def main
   end
+
+  def loginpage
+
+
+  end
 end
