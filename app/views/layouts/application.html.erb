@@ -45,8 +45,7 @@
     <ul class="right hide-on-med-and-down">
       <li><a href="#">관심목록</a></li>
       <li><a href="#">가입</a></li>
-      <li><a href="#">로그인</a>
-      </li>
+      <li><div id="kakao-logged-group"></div></li>
     </ul>
   </div>
   </nav>
@@ -62,9 +61,9 @@
 
 <!-- 카카오톡 로그인 -->
  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-<!--<script>
+<script>
   $(document).ready(function(){
-    Kakao.init("4f69ff4583399b3273d47da40e963756");
+    Kakao.init("3c2fbca0b3545727c7757b4685680a21");
     function getKakaotalkUserProfile(){
       Kakao.API.request({
         url: '/v1/user/me',
@@ -112,7 +111,7 @@
       createKakaotalkLogin();
     }
   });
-</script> -->
+</script>
 
 </body>
 </html>
