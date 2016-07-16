@@ -69,7 +69,9 @@
         <div>가격</div>
       </div>
 
+
       <div class="row">
+        <% @posts.each do |p| %>
         <div class=" col s12 m6">
           <div class="card">
                 <div class="card-image">
@@ -80,86 +82,11 @@
                   <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
                 </div>
                 <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
+                  <span class="teal-text text-lighten-2"><%= p.content %></style>
                 </div>
           </div>
         </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
+        <% end%>
       </div>
      </div>
    </div> <!--왼쪽확면 끝-->
