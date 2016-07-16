@@ -76,10 +76,10 @@
           <div class="card">
                 <div class="card-image">
                   <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
+                  <span class="card-title"><%= p.person_name%></span>
                 </div>
                 <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
+                  <p><%=p.gender%> / <%=p.age%><br><%=p.school%> / <%=p.major%> / <%=p.grade%></p>
                 </div>
                 <div class="card-action">
                   <span class="teal-text text-lighten-2"><%= p.content %></style>
@@ -89,7 +89,8 @@
         <% end%>
       </div>
      </div>
-   </div> <!--왼쪽확면 끝-->
+   </div>
+   <!--왼쪽확면 끝-->
 
 
 
