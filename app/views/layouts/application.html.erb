@@ -5,10 +5,114 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+  <style>
+    nav{
+      box-shadow: 0 0;
+    }/*내비바 음영 삭제*/
+
+    nav ul a,
+    nav .brand-logo {
+      color: white;
+
+
+    }
+
+    .header-logo{
+      padding: 0px 30px;
+    }
+
+
+  </style>
+
 </head>
 <body>
 
+  <nav class="teal lighten-1">
+  <div class="nav-wrapper">
+    <div class="header-logo">
+    <a href="#!" class="brand-logo">로고</a>
+    </div>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#">관심목록</a></li>
+      <li><a href="#">가입</a></li>
+      <li><a href="#">로그인</a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+
 <%= yield %>
+
+
+
+<!-- script -->
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<!-- 카카오톡 로그인 -->
+ <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!--<script>
+  $(document).ready(function(){
+    Kakao.init("4f69ff4583399b3273d47da40e963756");
+    function getKakaotalkUserProfile(){
+      Kakao.API.request({
+        url: '/v1/user/me',
+        success: function(res) {
+          $("#kakao-profile").append(res.properties.nickname);
+          $("#kakao-profile").append($("<img/>",{"src":res.properties.profile_image,"alt":res.properties.nickname+"님의 프로필 사진"}));
+        },
+        fail: function(error) {
+          console.log(error);
+        }
+      });
+    }
+    function createKakaotalkLogin(){
+      $("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
+      var loginBtn = $("<a/>",{"class":"kakao-login-btn", "text":"카카오 로그인"});
+      loginBtn.click(function(){
+        Kakao.Auth.login({
+          persistAccessToken: true,
+          persistRefreshToken: true,
+          success: function(authObj) {
+            getKakaotalkUserProfile();
+            createKakaotalkLogout();
+          },
+          fail: function(err) {
+            console.log(err);
+          }
+        });
+      });
+      $("#kakao-logged-group").prepend(loginBtn)
+    }
+    function createKakaotalkLogout(){
+      $("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
+      var logoutBtn = $("<a/>",{"class":"kakao-logout-btn","text":"로그아웃"});
+      logoutBtn.click(function(){
+        Kakao.Auth.logout();
+        createKakaotalkLogin();
+        $("#kakao-profile").text("");
+      });
+      $("#kakao-logged-group").prepend(logoutBtn);
+    }
+    if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
+      createKakaotalkLogout();
+      getKakaotalkUserProfile();
+    }else{
+      createKakaotalkLogin();
+    }
+  });
+</script> -->
 
 </body>
 </html>
