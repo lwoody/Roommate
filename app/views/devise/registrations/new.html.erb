@@ -1,0 +1,56 @@
+<h2>Sign up</h2>
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="row">
+
+  <div class="input-field col s6">
+    <%= f.label :"메일 주소" %>
+    <%= f.email_field :email, autocomplete: "off" %>
+  </div>
+
+  <div class="input-field col s3">
+    <%= f.label :"비밀번호(6자이상)" %>
+    <% if @minimum_password_length %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="input-field col s3">
+    <%= f.label :"비밀번호 확인" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="input-field col s6">
+    <%= f.label :"닉네임" %>
+    <%= f.text_field :personname, autocomplete:"off" %>
+  </div>
+  <div class="input-field col s6">
+
+    <%= f.select :schoolname, options_for_select([['고려대학교', '고려대학교'], ['연세대학교' , '연세대학교']])%>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :"전공" %>
+    <%= f.text_field :major, autocomplete:"off" %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :"나이" %>
+    <%= f.number_field :age, autocomplete:"off" %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.label :"학년" %>
+    <%= f.number_field :grade, autocomplete:"off" %>
+  </div>
+
+
+
+  <div class="actions btn waves-effect waves-light">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

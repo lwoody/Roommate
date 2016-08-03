@@ -42,11 +42,11 @@
     <div class="header-logo">
     <a href="/main" class="brand-logo">로고</a>
     </div>
-    <ul class="right hide-on-med-and-down">
+    <ul class="right hide-on-med-and-down" style="padding:22px;">
       <li><a href="#">관심목록</a></li>
-      <li><a href="/users/sign_in">로그인</a></li>
+      <li><a id="in_out" href=""></a></li>
       <li><a href="/write">등록</a></li>
-      <li><div id="kakao-logged-group"></div></li>
+      <!-- <li><div id="kakao-logged-group"></div></li> -->
     </ul>
   </div>
   </nav>
@@ -60,8 +60,21 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
+<!-- 로그인/아웃버튼 변경 -->
+<script>
+  $(document).ready(function(){
+  <% if user_signed_in? %>
+    $("#in_out").attr("href", "/users/sign_out");
+    $("#in_out").text("로그아웃");
+  <% else %>
+    $("#in_out").attr("href", "/users/sign_in");
+    $("#in_out").text("로그인");
+  <% end %>
+  });
+</script>
+
 <!-- 카카오톡 로그인 -->
- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+ <!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
   $(document).ready(function(){
     Kakao.init("3c2fbca0b3545727c7757b4685680a21");
@@ -112,7 +125,7 @@
       createKakaotalkLogin();
     }
   });
-</script>
+</script> -->
 
 </body>
 </html>
