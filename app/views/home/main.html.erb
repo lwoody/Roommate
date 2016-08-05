@@ -121,25 +121,25 @@
     <div class="section">
       <div class="row">
         <div class="col s12 m6 remove-padding contianer-relative <%= params[:bulletin_id] == '1' ? 'active' : '' %>">
-          <a href="/bulletins/1/posts">
+          <a class='posting' href="/bulletins/1/posts">
             <div class="item item-image clear-border" ><img class="tile-image" src=<%=asset_path("seoul.jpeg")%>></div>
             <h3 class="content-center-text-absolute white-text"><strong>고려대학교</strong></h3>
           </a>
         </div>
         <div class="col s12 m6 remove-padding contianer-relative">
-          <a href="/bulletins/2/posts">
+          <a class='posting' href="/bulletins/2/posts">
             <div class="item item-image clear-border"><img class="tile-image" src=<%=asset_path("busan.jpeg")%>></div>
             <h3 class="content-center-text-absolute white-text"><strong>연세대학교</strong></h3>
           </a>
         </div>
         <div class="col s12 m6 remove-padding contianer-relative">
-          <a href="/bulletins/3/posts">
+          <a class='posting' href="/bulletins/3/posts">
             <div class="item item-image clear-border"><img class="tile-image" src=<%=asset_path("student.jpeg")%>></div>
             <h3 class="content-center-text-absolute white-text"><strong>서울대학교</strong></h3>
           </a>
         </div>
         <div class="col s12 m6 remove-padding contianer-relative">
-          <a href="/bulletins/4/posts">
+          <a class='posting' href="/bulletins/4/posts">
             <div class="item item-image clear-border"><img class="tile-image" src=<%=asset_path("businessman.jpeg")%>></div>
             <h3 class="content-center-text-absolute white-text"><strong>한양대학교</strong></h3>
           </a>
@@ -200,5 +200,18 @@
       }); // end of document ready
       })(jQuery); // end of jQuery name space
      </script>
+
+
+     <script>
+     $(document).ready(function(){
+       <% if user_signed_in? %>
+
+       <% else %>
+       $(".posting").attr("href", "/users/sign_in");
+       <% end %>
+       });
+
+     </script>
+
   </body>
 </html>

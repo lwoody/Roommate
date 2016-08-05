@@ -11,14 +11,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+
+
+ <div class="row">
+  <div class="input-field col s6">
+    <%= f.select :post_schoolname, options_for_select([['고려대학교','1'], ['연세대학교','2']], :selected => current_user.schoolname)%>
+    <label for="post_schoolname">학교명</label>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+  <div class="input-field col s6">
+    <label for="post_personname">이름</label>
+    <%= f.text_field :post_personname ,value:current_user.personname%>
   </div>
+
+  <div class="input-field col s6">
+    <%= f.select :post_major, options_for_select([['공대','공대'], ['이과대','이과대']], :selected => current_user.major)%>
+    <label for="post_major">전공</label>
+  </div>
+  <div class="input-field col s6">
+    <label for="post_age">나이</label>
+    <%= f.text_field :post_age, value:current_user.age%>
+  </div>
+  <div class="input-field col s6">
+    <label for="post_grade">학년</label>
+    <%= f.text_field :post_grade, value:current_user.grade%>
+  </div>
+
+  <div class="container">
+    <div class="input-field col s3"><label>흡연 여부</label></div>
+    <div class="input-field col s3">
+      <%= f.radio_button :post_smoke, 'no', :checked => (current_user.smoke == "no") %>
+      <%= f.label :post_smoke, 'No', :value => 'no' %>
+      <%= f.radio_button :post_smoke, 'yes', :checked => (current_user.smoke == "yes") %>
+      <%= f.label :post_smoke, 'Yes', :value => 'yes' %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="input-field col s3"><label>주량</label></div>
+    <div class="input-field range-field col s3">
+      <%= f.range_field :post_drink, :in => 0..6, :step => '.5', value:current_user.drink  %>
+    </div>
+  </div>
+
+  <div class="field col s6">
+    <label>관련 활동</label><br>
+    <%= f.check_box :post_activity, {:checked => (current_user.activity == "religiousclub")},'religiousclub'%>
+    <%= f.label :post_activity, "종교활동" %>
+  </div>
+
+
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

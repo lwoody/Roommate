@@ -4,14 +4,18 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = @bulletin.posts.all
+    @posts = @bulletin.posts.all.order(created_at: :desc)
   end
 
   def show
+    redirect_to "/bulletins/"+current_user.schoolname+"/posts"
   end
 
   def new
-    @post = @bulletin.posts.new
+
+      @post = @bulletin.posts.new
+
+
   end
 
   def edit
@@ -61,6 +65,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:post_personname, :post_major)
     end
 end

@@ -42,10 +42,10 @@
     <div class="header-logo">
     <a href="/main" class="brand-logo">로고</a>
     </div>
-    <ul class="right hide-on-med-and-down" style="padding:22px;">
-      <li><a href="#">관심목록</a></li>
-      <li><a id="in_out" href=""></a></li>
-      <li><a href="/write">등록</a></li>
+    <ul class="right " style="padding:22px;"> <!--hide-on-med-and-down을 클래스에서 뺌-->
+      <li><a id="writing" href="">등록</a></li>
+      <li><a href="/users/edit">프로필</a></li>
+      <li><a id="in_out" href="#"></a></li>
       <!-- <li><div id="kakao-logged-group"></div></li> -->
     </ul>
   </div>
@@ -60,17 +60,36 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
-<!-- 로그인/아웃버튼 변경 -->
+<!-- 로그인/아웃버튼과 등록할때 게시판 자동변경 -->
 <script>
   $(document).ready(function(){
   <% if user_signed_in? %>
     $("#in_out").attr("href", "/users/sign_out");
     $("#in_out").text("로그아웃");
+
   <% else %>
     $("#in_out").attr("href", "/users/sign_in");
     $("#in_out").text("로그인");
+
   <% end %>
   });
+</script>
+
+<script>
+$(document).ready(function(){
+  <% if user_signed_in? %>
+  $("#writing").attr("href", "/bulletins/"+<%=current_user.schoolname%>+"/posts/new");
+  <% else %>
+  $("#writing").attr("href", "/users/sign_in");
+  <% end %>
+  });
+
+</script>
+
+<script>
+     $(document).ready(function() {
+        $('select').material_select();
+    });
 </script>
 
 <!-- 카카오톡 로그인 -->

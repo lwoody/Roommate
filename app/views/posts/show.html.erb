@@ -1,14 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
 
 <%= link_to 'Edit', edit_bulletin_post_path(@post.bulletin, @post) %> |
 <%= link_to 'Back', bulletin_posts_path %>

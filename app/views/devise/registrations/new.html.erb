@@ -4,53 +4,97 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="row">
+<div class="row">
 
   <div class="input-field col s6">
-    <%= f.label :"메일 주소" %>
-    <%= f.email_field :email, autocomplete: "off" %>
+    <%= f.email_field :email %>
+    <label>메일 주소</label>
   </div>
 
   <div class="input-field col s3">
-    <%= f.label :"비밀번호(6자이상)" %>
     <% if @minimum_password_length %>
     <% end %>
     <%= f.password_field :password, autocomplete: "off" %>
+    <label>비밀번호 (6자 이상)</label>
   </div>
 
-  <div class="input-field col s3">
-    <%= f.label :"비밀번호 확인" %>
+  <div class="field col s3">
+    <label>비밀번호 확인</label>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="divider"></div>
+
 
   <div class="input-field col s6">
-    <%= f.label :"닉네임" %>
     <%= f.text_field :personname, autocomplete:"off" %>
-  </div>
-  <div class="input-field col s6">
-
-    <%= f.select :schoolname, options_for_select([['고려대학교', '고려대학교'], ['연세대학교' , '연세대학교']])%>
-  </div>
-  <div class="input-field col s6">
-    <%= f.label :"전공" %>
-    <%= f.text_field :major, autocomplete:"off" %>
-  </div>
-  <div class="input-field col s6">
-    <%= f.label :"나이" %>
-    <%= f.number_field :age, autocomplete:"off" %>
-  </div>
-  <div class="input-field col s6">
-    <%= f.label :"학년" %>
-    <%= f.number_field :grade, autocomplete:"off" %>
+    <label>이름</label>
   </div>
 
+  <div class="input-field col s6">
+    <%= f.select :major, options_for_select([['공대','공대'], ['이과대','이과대']])%>
+    <label>전공</label>
+  </div>
+  <div class="input-field col s6">
+    <%= f.text_field :age, autocomplete:"off" %>
+    <label>나이</label>
+  </div>
+  <div class="input-field col s6">
+    <%= f.text_field :grade, autocomplete:"off" %>
+    <label>학년</label>
+  </div>
+
+  <div class="input-field col s6">
+    <%= f.select :schoolname, options_for_select([['고려대학교','1'], ['연세대학교','2']])%>
+    <label>학교명</label>
+  </div>
+
+  <div class="container">
+    <div class="input-field col s3"><label>흡연 여부</label></div>
+    <div class="input-field col s3">
+      <%= f.radio_button :smoke, 'no' %>
+      <%= f.label :smoke, 'No', :value => 'no' %>
+      <%= f.radio_button :smoke, 'yes' %>
+      <%= f.label :smoke, 'Yes', :value => 'yes' %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="input-field col s3"><label>주량</label></div>
+    <div class="input-field range-field col s3">
+      <%= f.range_field :drink, :in => 0..6, :step => '.5'  %>
+    </div>
+  </div>
+
+    <div class="field col s6">
+      <label>관련 활동</label><br>
+      <%= f.check_box :activity, {},'religiousclub' %>
+      <%= f.label :activity, "종교활동" %>
+      <!-- <%= f.check_box :weekend, {},'week' %>
+      <%= f.label :weekend, "주말" %>
+      <%= f.check_box :activity, {}, 'studentclub'%>
+      <%= f.label :activity, "학생회" %>
+      <%= f.check_box :activity, {}, 'academicclub'%>
+      <%= f.label :activity, "학회" %>
+      <%= f.check_box :activity, {}, 'activityclub'%>
+      <%= f.label :activity, "동아리" %>
+      <%= f.check_box :activity, {}, 'athleticsclub'%>
+      <%= f.label :activity, "운동모임" %> -->
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+</div>
 
 
   <div class="actions btn waves-effect waves-light">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

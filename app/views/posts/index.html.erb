@@ -70,16 +70,18 @@
       </div>
 
 
+
+
       <div class="row">
         <% @posts.each do |p| %>
         <div class=" col s12 m6">
           <div class="card">
                 <div class="card-image">
                   <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title"><%= p.title%></span>
+                  <span class="card-title"><%= p.post_personname%></span>
                 </div>
                 <div class="card-content">
-                  <span class="teal-text text-lighten-2"><%= p.content %></style>
+                  <span class="teal-text text-lighten-2"><%= p.post_major %></style>
                 </div>
                 <div class="card-action">
                   <%= link_to '보기', [p.bulletin, p], class:'btn btn-default' %>
@@ -100,7 +102,7 @@
       <!--화면 오른쪽-->
       <div style="float:right; width: 40%;">
 
-        <div id="map"></div>
+        <!-- <div id="map"></div> -->
 
       </div>
     `
@@ -122,7 +124,7 @@
 
 
 
-    <script>
+    <!-- <script>
 
         var map;
         function initMap() {
@@ -133,45 +135,10 @@
         }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH47gDvneNh6i-m-1T3JB6H6IGTolgkxM&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH47gDvneNh6i-m-1T3JB6H6IGTolgkxM&callback=initMap" async defer></script> -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
   </body>
 </html>
-
-
-
-
-
-<!-- <p id="notice"><%= notice %></p>
-
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td>
-        <%= link_to 'Show', [post.bulletin, post], class:'btn btn-default' %>
-        <%= link_to 'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %>
-        <%= link_to 'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_bulletin_post_path %> -->
