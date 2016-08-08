@@ -38,7 +38,7 @@
 
   <!--프로필-->
   <div class="input-field col s6">
-    <%= f.text_field :major, autocomplete:"off" %>
+    <%= f.select :major, options_for_select([['공대','공대'], ['이과대','이과대']], :selected => current_user.major)%>
     <label>전공</label>
   </div>
   <div class="input-field col s6">
@@ -51,7 +51,7 @@
   </div>
 
   <div class="input-field col s6">
-    <%= f.select :schoolname, options_for_select([['고려대학교','1'], ['연세대학교','2']])%>
+    <%= f.select :schoolname, options_for_select([['고려대학교','1'], ['연세대학교','2']], :selected => current_user.schoolname)%>
     <label>학교명</label>
   </div>
 

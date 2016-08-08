@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = @bulletin.posts.all.order(created_at: :desc)
+    @posts = @bulletin.posts.all
+
   end
 
   def show
@@ -65,6 +66,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:post_personname, :post_major)
+      params.require(:post).permit(:post_personname, :post_major) # 여기에 추가해야함
     end
 end
