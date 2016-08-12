@@ -1,7 +1,10 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
-    <div class="form-group">
+
+    <!-- 설렉트 필드로 밖에 안되기 때문에 숨겨줌 -->
+    <div class="form-group" style="display:none">
       <%= f.label :recipients %>
-      <%= f.select(:recipients, User.all.collect {|p| [ p.personname, p.id ] }, {}, { multiple: true , class: "form-control" })%>
+      <!-- <%= f.hidden_field :recipents, :value => [[@receiver_name,@receiver_id]] %> -->
+      <%= f.select(:recipients, options_for_select([[@receiver_name,@receiver_id]], :selected => @receiver_id ) ,{}, { multiple: true , class: "form-control" })%>
       <!-- <%= f.text_field :recipients ,value:@receiver_name%> -->
     </div>
     <div class="form-group">

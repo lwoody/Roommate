@@ -3,6 +3,8 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @receiver_name = params[:receiver_name]
+    @receiver_id = params[:receiver_id]
   end
 
   def create

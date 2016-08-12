@@ -106,7 +106,7 @@
                   <span class="teal-text text-lighten-2"><%= p.post_smoke %></style>
                 </div>
                 <div class="card-action">
-                  <%= link_to "메세지", new_conversation_path(receiver: p.post_personname, receiver_id:p.user_id), class:'btn btn-default'%>
+                  <%= link_to "메세지", new_conversation_path(receiver_name: p.post_personname, receiver_id:p.user_id), class:'btn btn-default'%>
                   <%= link_to '수정', edit_bulletin_post_path(p.bulletin, p), class:'btn btn-default' %>
                   <%= link_to '삭제', [p.bulletin, p], method: :delete, class:'btn btn-default' %>
                 </div>
