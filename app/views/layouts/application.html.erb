@@ -46,6 +46,11 @@
       <li><a id="writing" href="">등록</a></li>
       <li><a href="/users/edit">프로필</a></li>
       <li><a id="in_out" href="#"></a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Inbox", mailbox_inbox_path %></li>
+      <% else %>
+        <li></li>
+      <% end %>
       <!-- <li><div id="kakao-logged-group"></div></li> -->
     </ul>
   </div>

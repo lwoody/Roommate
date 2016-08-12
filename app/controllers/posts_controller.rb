@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = @bulletin.posts.all
+    @bulletin_name = @bulletin.title
 
   end
 
@@ -15,7 +16,6 @@ class PostsController < ApplicationController
   def new
 
       @post = @bulletin.posts.new
-
 
   end
 
@@ -66,6 +66,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:post_personname, :post_major) # 여기에 추가해야함
+      params.require(:post).permit(:post_personname, :post_major, :post_smoke) # 여기에 추가해야함
     end
 end

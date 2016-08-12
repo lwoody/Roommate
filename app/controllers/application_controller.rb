@@ -13,4 +13,23 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:activity,:weekend,:living,:sharing,:visitor,:sparetime,:noiselevel,:studywhere,:wakeup,:sleep,:drink,:schoolname, :personname,:major,:age,:grade, :smoke, :email, :password, :password_confirmation, :remember_me, :current_password) }
   end
 
+
+
+  helper_method :mailbox, :conversation
+
+  private
+
+  def mailbox
+    @mailbox ||= current_user.mailbox
+  end
+
+  def conversation
+    @conversation ||= mailbox.conversations.find(params[:id])
+  end
+
+  protected
+
+
+
+
 end
