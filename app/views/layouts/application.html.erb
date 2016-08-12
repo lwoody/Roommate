@@ -43,7 +43,6 @@
     <a href="/main" class="brand-logo">로고</a>
     </div>
     <ul class="right " style="padding:22px;"> <!--hide-on-med-and-down을 클래스에서 뺌-->
-      <li><a id="writing" href="">등록</a></li>
       <li><a href="/users/edit">프로필</a></li>
       <li><a id="in_out" href="#"></a></li>
       <% if user_signed_in? %>
@@ -78,17 +77,6 @@
 
   <% end %>
   });
-</script>
-
-<script>
-$(document).ready(function(){
-  <% if user_signed_in? %>
-  $("#writing").attr("href", "/bulletins/"+<%=current_user.schoolname%>+"/posts/new");
-  <% else %>
-  $("#writing").attr("href", "/users/sign_in");
-  <% end %>
-  });
-
 </script>
 
 <script>

@@ -64,6 +64,7 @@
             <h3><i class="mdi-content-send "></i></h3>
             <h4 class="grey-text text-darken-3"><%=@bulletin_name%></h4>
             <p class="left-align light grey-text text-darken-1 " style="text-align:center">자신에게 맞는 친구를 찾아보거나 프로필을 등록하세요</p>
+            <a href="" id="download-button" class="writing btn-large waves-effect waves-light teal lighten-1">등록</a>
           </div>
         </div>
 
@@ -105,7 +106,8 @@
                   <span class="teal-text text-lighten-2"><%= p.post_smoke %></style>
                 </div>
                 <div class="card-action">
-                  <a href="#" id="download-button" class="btn waves-effect waves-light teal lighten-1">메세지</a>
+                  <a href="/conversations/new" id="download-button" class="btn waves-effect waves-light teal lighten-1">메세지</a>
+                  <%= link_to "메세지", new_conversation_path(receiver: p.post_personname)%>
                   <%= link_to '수정', edit_bulletin_post_path(p.bulletin, p), class:'btn btn-default' %>
                   <%= link_to '삭제', [p.bulletin, p], method: :delete, class:'btn btn-default' %>
                 </div>
@@ -160,6 +162,17 @@
 
       }
     });
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      <% if user_signed_in? %>
+      $(".writing").attr("href", "/bulletins/"+<%=@bulletin_number%>+"/posts/new");
+      <% else %>
+      $(".writing").attr("href", "/users/sign_in");
+      <% end %>
+      });
+
     </script>
   </body>
 </html>

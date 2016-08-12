@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = @bulletin.posts.all
     @bulletin_name = @bulletin.title
+    @bulletin_number = @bulletin.id
 
   end
 
