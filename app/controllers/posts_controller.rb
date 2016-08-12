@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_bulletin
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -25,6 +26,8 @@ class PostsController < ApplicationController
 
   def create
     @post = @bulletin.posts.new(post_params)
+    @post.user = current_user
+
 
     respond_to do |format|
       if @post.save

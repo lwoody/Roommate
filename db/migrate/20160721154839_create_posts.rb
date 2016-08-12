@@ -17,6 +17,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :post_wakeup
       t.string :post_sleep
       t.string :post_activity
+      
 
       t.timestamps null: false
     end
