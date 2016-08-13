@@ -69,100 +69,28 @@
         <div>가격</div>
       </div>
 
+
       <div class="row">
+        <% @posts.each do |p| %>
         <div class=" col s12 m6">
           <div class="card">
                 <div class="card-image">
                   <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
+                  <span class="card-title"><%= p.person_name%></span>
                 </div>
                 <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
+                  <p><%=p.gender%> / <%=p.age%><br><%=p.school%> / <%=p.major%> / <%=p.grade%></p>
                 </div>
                 <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
+                  <span class="teal-text text-lighten-2"><%= p.content %></style>
                 </div>
           </div>
         </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
-        <div class=" col s12 m6">
-          <div class="card">
-                <div class="card-image">
-                  <img src=<%=asset_path("roommate2.jpeg")%>>
-                  <span class="card-title">홍길동</span>
-                </div>
-                <div class="card-content">
-                  <p>남자 /고려대학교 학생 <br> 안암역 / 학교 근처 / 월 30</p>
-                </div>
-                <div class="card-action">
-                  <span class="teal-text text-lighten-2">항목들</style>
-                </div>
-          </div>
-        </div>
-
+        <% end%>
       </div>
      </div>
-   </div> <!--왼쪽확면 끝-->
+   </div>
+   <!--왼쪽확면 끝-->
 
 
 
@@ -170,7 +98,7 @@
       <!--화면 오른쪽-->
       <div style="float:right; width: 40%;">
 
-        <div id="map"></div>
+        <!-- <div id="map"></div> -->
 
       </div>
     `
@@ -192,7 +120,7 @@
 
 
 
-    <script>
+    <!-- <script>
 
         var map;
         function initMap() {
@@ -203,7 +131,7 @@
         }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH47gDvneNh6i-m-1T3JB6H6IGTolgkxM&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH47gDvneNh6i-m-1T3JB6H6IGTolgkxM&callback=initMap" async defer></script> -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>

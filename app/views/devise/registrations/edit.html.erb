@@ -1,0 +1,106 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="input-field col s6">
+    <%= f.text_field :personname, autocomplete:"off" %>
+    <label>이름</label>
+  </div>
+
+  <!--프로필-->
+  <div class="input-field col s6">
+    <%= f.select :major, options_for_select([['공대','공대'], ['이과대','이과대']], :selected => current_user.major)%>
+    <label>전공</label>
+  </div>
+  <div class="input-field col s6">
+    <%= f.number_field :age, autocomplete:"off" %>
+    <label>나이</label>
+  </div>
+  <div class="input-field col s6">
+    <%= f.number_field :grade, autocomplete:"off" %>
+    <label>학년</label>
+  </div>
+
+  <div class="input-field col s6">
+    <%= f.select :schoolname, options_for_select([['고려대학교','1'], ['연세대학교','2']], :selected => current_user.schoolname)%>
+    <label>학교명</label>
+  </div>
+
+  <div class="container">
+    <div class="input-field col s3"><label>흡연 여부</label></div>
+    <div class="input-field col s3">
+      <%= f.radio_button :smoke, 'no' %>
+      <%= f.label :smoke, 'No', :value => 'no' %>
+      <%= f.radio_button :smoke, 'yes' %>
+      <%= f.label :smoke, 'Yes', :value => 'yes' %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="input-field col s3"><label>주량</label></div>
+    <div class="input-field range-field col s3">
+      <%= f.range_field :drink, :in => 0..10, :step => '.5'  %>
+    </div>
+  </div>
+
+  <div class="field col s6">
+    <label>관련 활동</label><br>
+    <%= f.check_box :activity, {},'religiousclub' %>
+    <%= f.label :activity, "종교활동" %>
+    <!-- <%= f.check_box :weekend, {},'week' %>
+    <%= f.label :weekend, "주말" %>
+    <%= f.check_box :activity, {}, 'studentclub'%>
+    <%= f.label :activity, "학생회" %>
+    <%= f.check_box :activity, {}, 'academicclub'%>
+    <%= f.label :activity, "학회" %>
+    <%= f.check_box :activity, {}, 'activityclub'%>
+    <%= f.label :activity, "동아리" %>
+    <%= f.check_box :activity, {}, 'athleticsclub'%>
+    <%= f.label :activity, "운동모임" %> -->
+
+
+
+
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>

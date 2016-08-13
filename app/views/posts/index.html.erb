@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #eee;
+      }
+      #map {
+        height: 708px;
+        width: 100%;
+      }
+
+      #headers {
+          background-color:white;
+          color:gray;
+          padding:25px;
+          border-bottom: 1px solid #D0D0D0;
+      }
+
+      .box-scroll{
+        overflow: auto;
+        height: 708px;
+
+      }
+
+
+      .sector-option{
+          background-color:white;
+          color:gray;
+          padding: 25px 0px;
+          border-bottom: 1px solid #D0D0D0;
+      }
+
+      .sector-option div{
+          width: 95%;
+          margin: 0px auto;
+      }
+
+
+      }
+      .box-left{
+        padding: 27px 50px;
+        border-left:1px solid #D0D0D0;
+      }
+
+
+      </style>
+
+
+  </head>
+  <body>
+
+
+
+      <div class="section-option">
+
+        <div class="row">
+          <div class="col s12 center">
+            <h3><i class="mdi-content-send "></i></h3>
+            <h4 class="grey-text text-darken-3"><%=@bulletin_name%></h4>
+            <p class="left-align light grey-text text-darken-1 " style="text-align:center">자신에게 맞는 친구를 찾아보거나 프로필을 등록하세요</p>
+            <a href="" id="download-button" class="writing btn-large waves-effect waves-light teal lighten-1">등록</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="divider" style=""></div>
+
+
+    <!-- 화면왼쪽 -->
+  <!-- <div style="float:left; width:60% "> -->
+    <div class="box-scroll">
+      <div class="sector-option">
+        <label>흡연</label>
+        <form action="#">
+          <input type="checkbox" id="yes" />
+          <label for="yes"> 예 </label>
+          <input type="checkbox" id="no" />
+          <label for="no"> 아니오</label>
+        </form>
+      </div>
+      <div class="sector-option">
+        <div>라이프 스타일</div>
+      </div>
+      <div class="sector-option">
+        <div>가격</div>
+      </div>
+
+     <div class="row">
+
+        <div class='field'>
+
+        <% @posts.each do |p| %>
+        <div class=" col s12 m6 <%= p.post_smoke %>">
+          <div class="card">
+                <div class="card-image">
+                  <img src=<%=asset_path("roommate2.jpeg")%>>
+                  <span class="card-title"><%= p.post_personname%></span>
+                </div>
+                <div class="card-content">
+                  <span class="teal-text text-lighten-2"><%= p.post_smoke %></style>
+                </div>
+                <div class="card-action">
+                  <%= link_to "메세지", new_conversation_path(receiver_name: p.post_personname, receiver_id:p.user_id), class:'btn btn-default'%>
+                  <%= link_to '수정', edit_bulletin_post_path(p.bulletin, p), class:'btn btn-default' %>
+                  <%= link_to '삭제', [p.bulletin, p], method: :delete, class:'btn btn-default' %>
+                </div>
+          </div>
+        </div>
+        <% end%>
+      </div>
+     </div>
+   </div>
+   <!--왼쪽확면 끝-->
+
+
+
+
+      <!--화면 오른쪽-->
+      <!-- <div style="float:right; width: 40%;"> -->
+
+        <!-- <div id="map"></div> -->
+
+      <!-- </div> -->
+
+    <!-- <div style="clear:both"></div> -->
+
+
+
+
+
+    <!-- <script>
+
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH47gDvneNh6i-m-1T3JB6H6IGTolgkxM&callback=initMap" async defer></script> -->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script>
+    $('input[type="checkbox"]').click(function() {
+      if ($('input[type="checkbox"]:checked').length > 0) {
+      $('.field > div ').hide();
+      $('input[type="checkbox"]:checked').each(function() {
+          $('.field .' + this.id).show();
+        });
+      } else {
+      $('.field > div ').show();
+
+      }
+    });
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      <% if user_signed_in? %>
+      $(".writing").attr("href", "/bulletins/"+<%=@bulletin_number%>+"/posts/new");
+      <% else %>
+      $(".writing").attr("href", "/users/sign_in");
+      <% end %>
+      });
+
+    </script>
+  </body>
+</html>

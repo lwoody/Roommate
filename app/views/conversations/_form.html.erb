@@ -1,0 +1,21 @@
+<%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+
+    <!-- 설렉트 필드로 밖에 안되기 때문에 숨겨줌 -->
+    <div class="form-group" style="display:none">
+      <%= f.label :recipients %>
+      <!-- <%= f.hidden_field :recipents, :value => [[@receiver_name,@receiver_id]] %> -->
+      <%= f.select(:recipients, options_for_select([[@receiver_name,@receiver_id]], :selected => @receiver_id ) ,{}, { multiple: true , class: "form-control" })%>
+      <!-- <%= f.text_field :recipients ,value:@receiver_name%> -->
+    </div>
+    <div class="form-group">
+      <%= f.label :subject %>
+      <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :message %>
+      <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+    </div>
+
+    <%= f.submit "Send Message", class: "btn btn-success" %>
+
+<% end %>

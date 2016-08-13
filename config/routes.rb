@@ -1,9 +1,32 @@
 Rails.application.routes.draw do
-  root "home#main"
 
-  get 'home/main'
+  devise_for :users
+  resources :users
+  resources :bulletins do
+    resources :posts
+  end
+
+
+
+  root "home#main"
+  get '/main' => "home#main"
   get '/list' => "home#list"
-  get '/loginpage' => "home#loginpage"
+  get '/write' => "home#write"
+  post '/complete' => "home#complete"
+
+  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
+
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
