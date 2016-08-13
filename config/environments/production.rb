@@ -76,4 +76,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #만약에 디플로이 시키면 이렇게 하면 될듯
+  config.action_mailer.default_url_options = { host: "www.example.com" }
 end
